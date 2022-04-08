@@ -14,6 +14,12 @@ La base de datos utilizada es SQL, y para el backend escogido utilizaremos PHP y
 
 ### Instrucciones 🔧
 
+El proyecto está deployado en Heroku para poder acceder a la API de forma remota. Se puede acceder a todos los endpoints utilizando lo siguiente como raiz: 
+
+https://rocky-retreat-20214.herokuapp.com/
+
+A continuación tenemos las instrucciones por si es necesario acceder de manera local:
+
 El primer paso para arrancar el proyecto es clonar este repositorio en vuestro repositorio local.
 
 A continuación, debemos instalar las dependencias no incluidas en el repositorio al utilizar el archivo .gitignore. Para ello, debemos introducir en el terminal el siguiente comando: 
