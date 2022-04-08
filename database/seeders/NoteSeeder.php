@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class NoteSeeder extends Seeder
 {
@@ -13,6 +15,22 @@ class NoteSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('notes')->insert([
+            'title' => Str::random(10),
+            'description' => Str::random(10),
+            'user_id' => rand(1, 2)
+        ]);
+
+        DB::table('notes')->insert([
+            'title' => Str::random(10),
+            'description' => Str::random(10),
+            'user_id' => rand(1, 2)
+        ]);
+
+        DB::table('notes')->insert([
+            'title' => Str::random(10),
+            'description' => Str::random(10),
+            'user_id' => rand(1, 2)
+        ]);
     }
 }
