@@ -17,6 +17,13 @@ class TaskController extends Controller
 
         return $task;
     }
+    public function getOneByTitle(Request $request)
+    {
+        $dataUser = auth()->user();
+        $task = Task::where('user_id', $dataUser->id)->where('title', 'like', '%'.$request->title.'%')->get();
+
+        return $task;
+    }
 
     public function delete($id)
     {
