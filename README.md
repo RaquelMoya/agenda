@@ -1,64 +1,109 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+## Backend Agenda
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
-## About Laravel
+:wave: Soy Raquel Moya.</br>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+<hr>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Sobre el proyecto
 
-## Learning Laravel
+Os presento aquí una prueba técnica que consiste en crear una app de una agenda personal. En este repositorio encontraremos todo lo referente al backend. 
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+La base de datos utilizada es SQL, y para el backend escogido utilizaremos PHP y Laravel.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Instrucciones 🔧
 
-## Laravel Sponsors
+El primer paso para arrancar el proyecto es clonar este repositorio en vuestro repositorio local.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+A continuación, debemos instalar las dependencias no incluidas en el repositorio al utilizar el archivo .gitignore. Para ello, debemos introducir en el terminal el siguiente comando: 
 
-### Premium Partners
+### `composer install`
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+Realizamos la migración de los modelos a la base de datos local.
 
-## Contributing
+Dado que Laravel trae por defecto el archivo .env, y nosotros no lo subimos al repositorio remoto al estar incluido en el .gitignore, deberemos configurar las variables de entorno referentes a la base de datos con nuestros datos de BBDD local. 
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+A continuación ejecutaremos el siguiente comando para que nos incluya en el .env un código encriptado:
 
-## Code of Conduct
+### `php artisan jwt:secret`
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Generamos las migraciones:
 
-## Security Vulnerabilities
+### `php artisan migrate`
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Levantamos el servidor para acceder a los endpoints mediante Postman.
 
-## License
+### `php artisan serve`
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Y ya podríamos ir a Postman para probar todos los endpoints.
+
+<a href="https://www.postman.com/"><img src="app/img/runpostman.png" width="150"></a>
+
+
+
+## Endpoints
+
+Al levantar el servidor nos muestra en consola la raiz sobre la que tenemos que basar nuestros endpoints, en este caso es: 
+
+### `http://127.0.0.1:8000`
+
+A continuación se especifican el método a introducir en Postman, y lo que debemos introducir a continuación de la raiz para acceder a cada uno de los endpoints.
+
+TASKS
+- GET: /api/task/{id} -> Muestra una tarea por su id.
+- POST: /api/task -> Crea una nueva tarea.
+- DELETE: /api/task/{id} -> Elimina una tarea por su id.
+- PUT: /api/task/{id} -> Modifica una tarea por su id.
+- GET: /api/tasks_user -> Muestra todas las tarea del usuario.
+- GET: /api/tasks_title/{title} -> Muestra una tarea por su título.
+
+NOTES
+- GET: /api/note/{id} -> Muestra una nota por su id.
+- POST: /api/note -> Crea una nueva nota.
+- DELETE: /api/note/{id} -> Elimina una nota por su id.
+- PUT: /api/note/{id} -> Modifica una nota por su id.
+- GET: /api/notes_user -> Muestra todas las nota del usuario.
+- GET: /api/notes_title/{title} -> Muestra una nota por su título.
+
+CONTACTS
+- GET: /api/contact/{id} -> Muestra un contacto por su id.
+- POST: /api/contact -> Crea un nuevo contacto.
+- DELETE: /api/contact/{id} -> Elimina un contacto por su id.
+- PUT: /api/contact/{id} -> Modifica un contacto por su id.
+- GET: /api/contacts_user -> Muestra todas las contacto del usuario.
+- GET: /api/contacts_name/{name} -> Muestra un contacto por su nombre.
+
+AUTH
+- POST: /api/register -> Crea un nuevo usuario.
+- POST: /api/login-> Loguea con un usuario.
+
+USERS
+- POST: /api/logout -> Desloguea al usuario logueado.
+- GET: /api/me -> Muestra la información del usuario.
+- DELETE: /api/user/{id} -> Elimina al usuario por su id.
+- PUT: /api/user/{id} -> Modifica al usuario por su id.
+
+## Models relation
+
+<img src="app/img/reverse.jpg" width="1500">
+
+
+
+## Tecnologías y dependencias utilizadas
+
+<img src="app/img/sql.png" width="90em"/><img src="app/img/php.png" width="90em"/><img src="app/img/laravel.png" width="90em"/>
+</br>
+
+<img src="app/img/dotenv.png" width="90em"/><img src="app/img/jwt.png" width="90em"/><img src="app/img/github.png" width="90em"/><img src="app/img/postman.png" width="90em"/>
+</br>
+
+
+<hr>
+
+
+## Developers ✍️
+
+[Raquel Moya](https://github.com/RaquelMoya)
+
+Última edición: 11/04/2022
