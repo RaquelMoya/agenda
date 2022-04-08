@@ -34,8 +34,6 @@ Route::post('/login', [AuthController::class, 'login']);
 
 //USERS
 
-Route::post('/user', [UserController::class, 'create']);
-
 Route::group([
     'middleware' => 'jwt.auth'
 ], function () {
@@ -45,6 +43,6 @@ Route::group([
     Route::put('/user/{id}', [UserController::class, 'updateOne']);
 });
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
