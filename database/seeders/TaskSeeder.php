@@ -18,19 +18,19 @@ class TaskSeeder extends Seeder
         DB::table('tasks')->insert([
             'title' => Str::random(10),
             'description' => Str::random(10),
-            'user_id' => rand(1, 2)
+            'user_id' => 1
         ]);
 
         DB::table('tasks')->insert([
             'title' => Str::random(10),
             'description' => Str::random(10),
-            'user_id' => rand(1, 2)
+            'user_id' => 1
         ]);
 
         DB::table('tasks')->insert([
             'title' => Str::random(10),
             'description' => Str::random(10),
-            'user_id' => rand(1, 2)
+            'user_id' => 2
         ]);
     }
 }
