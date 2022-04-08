@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
@@ -40,6 +41,18 @@ Route::group([
     Route::get('/notes_user', [NoteController::class, 'getAllByUser']);
     Route::put('/note/{id}', [NoteController::class, 'updateOne']);
     Route::get('/notes_title/{title}', [NoteController::class, 'getOneByTitle']);
+});
+
+// Contacts
+Route::group([
+    'middleware' => 'jwt.auth'
+], function () {
+    Route::get('/contact/{id}', [ContactController::class, 'getOne']);    
+    Route::delete('/contact/{id}', [ContactController::class, 'delete']);    
+    Route::post('/contact', [ContactController::class, 'create']);    
+    Route::get('/contacts_user', [ContactController::class, 'getAllByUser']);
+    Route::put('/contact/{id}', [ContactController::class, 'updateOne']);
+    Route::get('/contacts_name/{name}', [ContactController::class, 'getOneByName']);
 });
 
 // AUTH
