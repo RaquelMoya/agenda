@@ -20,7 +20,7 @@ class NoteController extends Controller
     public function getOneByTitle(Request $request)
     {
         $dataUser = auth()->user();
-        $note = Note::where('user_id', $dataUser->id)->where('title', 'like', '%'.$request->title.'%')->get();
+        $note = Note::where('user_id', $dataUser->id)->where('title', 'like', '%'.$request->title.'%')->findOrFail();
 
         return $note;
     }
@@ -95,7 +95,7 @@ class NoteController extends Controller
     {
         $dataUser = auth()->user();
 
-        $notesByUserId = User::find($dataUser->id)->notes;
+        $notesByUserId = User::findOrFail($dataUser->id)->notes;
 
         $response = [
             'user' => $dataUser,

@@ -20,7 +20,7 @@ class TaskController extends Controller
     public function getOneByTitle(Request $request)
     {
         $dataUser = auth()->user();
-        $task = Task::where('user_id', $dataUser->id)->where('title', 'like', '%'.$request->title.'%')->get();
+        $task = Task::where('user_id', $dataUser->id)->where('title', 'like', '%'.$request->title.'%')->findOrFail();
 
         return $task;
     }
@@ -86,7 +86,7 @@ class TaskController extends Controller
     {
         $dataUser = auth()->user();
 
-        $tasksByUserId = User::find($dataUser->id)->tasks;
+        $tasksByUserId = User::findOrFail($dataUser->id)->tasks;
 
         $response = [
             'user' => $dataUser,

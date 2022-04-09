@@ -20,7 +20,7 @@ class ContactController extends Controller
     public function getOneByName(Request $request)
     {
         $dataUser = auth()->user();
-        $contact = Contact::where('user_id', $dataUser->id)->where('name', 'like', '%'.$request->name.'%')->get();
+        $contact = Contact::where('user_id', $dataUser->id)->where('name', 'like', '%'.$request->name.'%')->findOrFail();
        
         return $contact;
     }
@@ -104,7 +104,7 @@ class ContactController extends Controller
     {
         $dataUser = auth()->user();
 
-        $contactsByUserId = User::find($dataUser->id)->contacts;
+        $contactsByUserId = User::findOrFail($dataUser->id)->contacts;
 
         $response = [
             'user' => $dataUser,
