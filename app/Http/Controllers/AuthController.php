@@ -53,6 +53,7 @@ class AuthController extends Controller
         }
 
         return response()->json([
+            'user'=>auth()->user(),
             'success' => true,
             'token' => $jwt_token,
         ]);
